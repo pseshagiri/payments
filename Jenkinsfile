@@ -3,7 +3,7 @@ pipeline{
     stages{
        stage("Git Check Out"){
           steps{
-            git branch: 'main', credentialsId: 'ordermsgithubid', url: 'https://github.com/pseshagiri/order-ms.git'
+            git branch: 'main', credentialsId: 'gitid', url: 'https://github.com/pseshagiri/payments.git'
           }
        }
        stage("Clean Build"){
