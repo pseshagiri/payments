@@ -1,8 +1,7 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: order-ms 
+ name: payments-ms 
 spec:
  replicas: 3
  selector:
