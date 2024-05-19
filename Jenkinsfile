@@ -6,13 +6,35 @@ pipeline{
             git branch: 'main', credentialsId: 'gitid', url: 'https://github.com/pseshagiri/payments.git'
           }
        }
-       stage("Clean Build"){
-           steps{
-           //withMaven(globalMavenSettingsConfig: '--- Use system default settings or file path ---', jdk: '--- Use system default JDK ---', maven: 'Maven3', mavenSettingsConfig: '--- Use system default settings or file path ---') {
-    			sh "mvn clean install"
-			//}
-               
+       stage("Maven Clean Build"){
+           steps {            
+    			script{sh "mvn clean install"}
            }
-        }	
-}
+        }
+        stage("Docker Build"){
+           steps {            
+    			script{
+    			    withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', 
+                     variable:'dockerhublogin')]){
+                         sh 'docker build -t pseshagiri/microservices:payments-ms-$BUILD_NUMBER .'
+                     }
+            }
+    	 }
+    	 
+    	 stage("Docker Push"){
+           steps {            
+    			script{
+    			    withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', 
+                     variable:'dockerhublogin')]){
+                     docker.withRegistry( '', 'dockerhublogin' ) {
+             			sh 'docker push pseshagiri/microservices:payments-ms-$BUILD_NUMBER'
+               		}
+                }
+            }
+    	 }
+           
+        } //stages 
+     }
+     }           	
+  
     }// pipelin//e
