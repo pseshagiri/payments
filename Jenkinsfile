@@ -20,6 +20,7 @@ pipeline{
                      }
             }
     	 }
+    	 }
     	 
     	 stage("Docker Push"){
            steps {            
@@ -35,6 +36,6 @@ pipeline{
            
         } //stages 
      }
-     }           	
+               	
   
     }// pipelin//e
