@@ -14,7 +14,7 @@ spec:
   spec:  
    containers:
     - name: payments-ms
-      image: pseshagiri/microservices:payments-ms-2
+      image: pseshagiri/microservices:payments-ms-3
       imagePullPolicy: Always
       ports:
        - containerPort: 9003
