@@ -1,14 +1,19 @@
 package com.seshagiri.pojo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity()
 @Table(name = "payments")
 public class PaymentEntity {
 	
+	@Id()
 	private int id;
+	@Column(name="productName")
 	private String productName;
+	@Column(name="billamount")
 	private double billamount;
 	public int getId() {
 		return id;
