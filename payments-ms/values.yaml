@@ -44,11 +44,11 @@ service:
   port: 9003
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
   hosts:
     - host: seshagiri.ubuntu.com
       paths:
