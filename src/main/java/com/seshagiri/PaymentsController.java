@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seshagiri.pojo.PaymentDto;
+import com.seshagiri.pojo.PaymentEntity;
 import com.seshagiri.service.PaymentService;
 
 @RestController()
@@ -21,6 +24,12 @@ public class PaymentsController {
 	public List<PaymentDto> get(){
 		
 		return paymentService.getPayments();
+	}
+	
+	@PostMapping("/add")
+	public PaymentDto add(@RequestBody() PaymentEntity paymentEntity) {
+		
+		return paymentService.add(paymentEntity);
 	}
 
 }

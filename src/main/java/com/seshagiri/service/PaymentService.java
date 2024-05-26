@@ -20,6 +20,11 @@ public class PaymentService {
 		return  mapEntityToPojoList(paymentRepo.findAll());
 	}
 	
+	public PaymentDto add(PaymentEntity entity) {
+		
+		 return mapEntityToPojo(paymentRepo.save(entity));
+	}
+	
 	 private List<PaymentDto> mapEntityToPojoList(Iterable<PaymentEntity> entityList){
 	        List<PaymentDto> orderList = new ArrayList<PaymentDto>();
 	        for (PaymentEntity orderEntity : entityList) {
