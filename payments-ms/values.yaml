@@ -8,7 +8,7 @@ image:
   repository: pseshagiri/microservices
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "payments-ms-6"
+  tag: "payments-ms-8"
 
 imagePullSecrets: []
 nameOverride: ""
