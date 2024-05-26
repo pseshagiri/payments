@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,14 +29,25 @@ public class PaymentsController {
 		return paymentService.getPayments();
 	}
 	
+	@GetMapping("/{id}")
+	public List<PaymentDto> getById(@PathVariable(name = "id")Integer id){		
+		return paymentService.getPayments();
+	}
+	
+	@PutMapping("/{id}")
+	public PaymentDto update(@RequestBody() PaymentEntity paymentEntity){		
+		return paymentService.update(paymentEntity);
+	}
+	
 	@PostMapping("/add")
 	public PaymentDto add(@RequestBody() PaymentEntity paymentEntity) {		
 		return paymentService.add(paymentEntity);
 	}
 	
+		
 	@DeleteMapping("/delete")
-	public int delete(@PathVariable() int id) {		
-		return paymentService.delete(id);
+	public int delete(@RequestBody() PaymentEntity paymentEntity) {		
+		return paymentService.delete(paymentEntity.getId());
 	}
 
 

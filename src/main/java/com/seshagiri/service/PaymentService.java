@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.util.RequestPayload;
 import com.seshagiri.pojo.PaymentDto;
 import com.seshagiri.pojo.PaymentEntity;
 import com.seshagiri.repo.PaymentRepo;
@@ -21,8 +20,15 @@ public class PaymentService {
 		return  mapEntityToPojoList(paymentRepo.findAll());
 	}
 	
-	public PaymentDto add(PaymentEntity entity) {
-		
+	public PaymentDto getPaymentById(Integer id){
+		return  mapEntityToPojo(paymentRepo.findById(id).get());
+	}
+	
+	public PaymentDto update(PaymentEntity entity) {		
+		 return mapEntityToPojo(paymentRepo.save(entity));
+	}
+	
+	public PaymentDto add(PaymentEntity entity) {		
 		 return mapEntityToPojo(paymentRepo.save(entity));
 	}
 	
