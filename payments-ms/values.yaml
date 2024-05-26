@@ -8,7 +8,7 @@ image:
   repository: pseshagiri/microservices
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "payments-ms-9"
+  tag: "payments-ms-10"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,7 +41,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 9003
 
 ingress:
   enabled: true
