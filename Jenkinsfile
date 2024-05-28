@@ -36,7 +36,9 @@ pipeline{
     	 }    	 
     	 
            
-        } *///stages
+        } */
+        
+        //stages
 
         stage("ECR Push"){
             steps{
