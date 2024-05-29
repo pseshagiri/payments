@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: pseshagiri/microservices
+  repository: 992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "payments-ms-10"
+  tag: "payments-ms-11"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -44,7 +44,7 @@ service:
   port: 9003
 
 ingress:
-  enabled: true
+  enabled: false
   className: ""
   annotations: {}
   # kubernetes.io/ingress.class: nginx
