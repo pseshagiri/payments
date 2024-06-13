@@ -5,10 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: 992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms
+  #repository: 992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms
+  repository: pseshagiri/microservices
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "payments-ms-11"
+  tag: "payments-ms-18"
 
 imagePullSecrets: []
 nameOverride: ""
