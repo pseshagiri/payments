@@ -11,6 +11,7 @@ pipeline{
     			script{sh "mvn clean install"}
            }
         }
+        /*
         stage("Docker Build"){
            steps {            
     			script{
@@ -21,8 +22,8 @@ pipeline{
             }
     	 }
     	 }
-
-        /*
+        */
+        
     	 stage("Docker Push"){
            steps {            
     			script{
@@ -36,10 +37,10 @@ pipeline{
     	 }    	 
     	 
            
-        } */
+        } 
         
         //stages
-
+        /*
         stage("ECR Push"){
             steps{
              script{
@@ -48,7 +49,7 @@ pipeline{
              }
         }
 
-    }
+    } */
     }  //stages          	
   
     } // pipeline
