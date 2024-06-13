@@ -30,7 +30,7 @@ pipeline{
     			    withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', 
                      variable:'dockerhublogin')]){
                      docker.withRegistry( '', 'dockerhublogin' ) {
-             			sh 'docker push pseshagiri/microservices:payments-ms-$BUILD_NUMBER'
+             			sh "docker push pseshagiri/microservices:payments-ms-$BUILD_NUMBER"
                		}
                 }
             }
