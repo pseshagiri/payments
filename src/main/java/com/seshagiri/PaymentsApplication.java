@@ -22,9 +22,9 @@ public class PaymentsApplication {
 	@Bean()
 	public CommandLineRunner sampleData(){
 		return (args -> {
-			orderRepo.save(new PaymentEntity(1,"Mobile",2500.00));
-			orderRepo.save(new PaymentEntity(2,"SmartWatch",250.00));
-			orderRepo.save(new PaymentEntity(3,"IFB Washing Machine",25000.00));
+			orderRepo.save(new PaymentEntity(1,"Mobile",2500));
+			orderRepo.save(new PaymentEntity(2,"SmartWatch",250));
+			orderRepo.save(new PaymentEntity(3,"IFB Washing Machine",25000));
 		});
 	}
 

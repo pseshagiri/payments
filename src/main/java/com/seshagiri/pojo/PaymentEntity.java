@@ -11,7 +11,7 @@ public class PaymentEntity {
 	
 	@Id()
 	private int id;
-	@Column(name="productName")
+	@Column(name="productname")
 	private String productName;
 	@Column(name="billamount")
 	private double billamount;
