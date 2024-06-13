@@ -11,6 +11,16 @@ pipeline{
     			script{sh "mvn clean install"}
            }
         }
+         stage("Docker Build"){
+           steps {            
+    			script{
+    			    withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', 
+                     variable:'dockerhublogin')]){
+                         sh 'docker build -t pseshagiri/microservices:payments-ms-$BUILD_NUMBER .'
+                     }
+            }
+    	 }
+    	 }
         /*
         stage("Docker Build"){
            steps {            
