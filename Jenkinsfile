@@ -58,7 +58,21 @@ pipeline{
              }
         }
 
-    }
+      }
+	 stage("Domain image clean Push"){
+            steps{
+             script{
+               withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', 
+                     variable:'dockerhublogin')]){
+                 docker.withRegistry( '', 'dockerhublogin' ) {
+                  sh "docker image remove 992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms:payments-ms-$BUILD_NUMBER"
+                }
+	      }
+             }
+        }
+
+      }
+
     }  //stages          	
   
     } // pipeline
