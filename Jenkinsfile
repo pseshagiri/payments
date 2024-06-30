@@ -26,8 +26,8 @@ pipeline{
         stage("Docker Build"){
            steps {            
     			script{
-    			    withCredentials([usernameColonPassword(credentialsId: 'ecr-login', 
-                     variable:'ecr-login')]){
+    			    withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', 
+                     variable:'dockerhublogin')]){
                          sh 'docker build -t 992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms:payments-ms-$BUILD_NUMBER .'
                      }
             }
@@ -53,7 +53,7 @@ pipeline{
         stage("ECR Push"){
             steps{
              script{
-               sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 992382437744.dkr.ecr.ap-south-1.amazonaws.com"  
+               sh "aws ecr get-login-password --region ap-south-1 | sudo docker login --username AWS --password-stdin 992382437744.dkr.ecr.ap-south-1.amazonaws.com"  
                sh "docker push 992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms:payments-ms-$BUILD_NUMBER"
              }
         }
