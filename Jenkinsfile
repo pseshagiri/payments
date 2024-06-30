@@ -26,8 +26,8 @@ pipeline{
         stage("Docker Build"){
            steps {            
     			script{
-    			    withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', 
-                     variable:'dockerhublogin')]){
+    			    withCredentials([usernameColonPassword(credentialsId: 'ecr-login', 
+                     variable:'ecr-login')]){
                          sh 'docker build -t 992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms:payments-ms-$BUILD_NUMBER .'
                      }
             }
