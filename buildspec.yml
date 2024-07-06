@@ -25,7 +25,7 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAGS
       ## Creating container name
       - DOCKER_CONTAINER_NAME=payments-ms-srv
-      - printf '[{"name:" "%s","imageuri:" "%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAGS > imagedefinitions.json
+      - printf '[{"name":"%s", "imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAGS > imagedefinitions.json
       - echo $DOCKER_CONTAINER_NAME
       - echo printing imagedefinitions.json
       - cat imagedefinitions.json
