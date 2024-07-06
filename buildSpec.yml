@@ -1,0 +1,35 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo login to aws ECR
+      - aws --version
+      # login to ecr repository
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin YOUR_AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com
+      # Replace all account and repository name
+      - REPOSITORY_URI=YOUR_AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com:Latest/retail-ms-repo
+      - IMAGE_TAGS=payments-aws-srv-$CODEBUILD_BUILD_ID
+  build:
+    commands:
+      - echo build payments project started
+      - echo build jar file
+      - mvn clean install
+      - echo build docker images
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAGS
+      - echo build payments project and image tagging completed.
+  post_build:
+     command:
+      - echo post build phases started
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAGS
+      ## Creating container name
+      - DOCKER_CONTAINER_NAME=payments-ms-srv
+      - printf '[{"name:" "%s","imageuri:" "%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAGS > imagedefinitions.json
+      - echo $DOCKER_CONTAINER_NAME
+      - echo printing imagedefinitions.json
+      - cat imagedefinitions.json
+  artifacts:
+    files:
+     - imagedefinitions.json
+     - target/payments.jar
