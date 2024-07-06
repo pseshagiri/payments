@@ -4,7 +4,7 @@ spring:
  application:
   name: payments-ms
  datasource:
-  driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/fruitsretaildb
-  username: postgres
-  password: HpEcbMnCjs
+  driverClassName: org.h2.Driver
+  url: jdbc:h2:mem:testdb
+  username: sa
+  password:
