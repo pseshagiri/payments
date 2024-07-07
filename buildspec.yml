@@ -7,7 +7,7 @@ phases:
       # login to ecr repository
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 992382437744.dkr.ecr.ap-south-1.amazonaws.com
       # Replace all account and repository name
-      - REPOSITORY_URI=992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms
+      - REPOSITORY_URI=992382437744.dkr.ecr.ap-south-1.amazonaws.com/retail-ms-repo
       - IMAGE_TAGS=payments-aws-srv-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
