@@ -17,6 +17,7 @@ public class PaymentService {
 	PaymentRepo paymentRepo;
 
 	public List<PaymentDto> getPayments(){
+		System.out.println("get Payment called ...");
 		return  mapEntityToPojoList(paymentRepo.findAll());
 	}
 	
